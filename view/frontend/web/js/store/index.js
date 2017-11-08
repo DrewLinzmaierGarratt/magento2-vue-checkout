@@ -13,7 +13,8 @@ const store = new Vuex.Store({
     shippingInformation: shippingInformation,
     totals: {},
     selectedMethods: selectedMethods,
-    regionList: regionList
+    regionList: regionList,
+    loader: true
   },
   mutations: {
     updateStep (state, newStep) {
