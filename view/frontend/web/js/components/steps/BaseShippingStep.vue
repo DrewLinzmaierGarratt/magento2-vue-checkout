@@ -161,9 +161,10 @@ export default {
                                       .querySelectorAll('input, select, textarea'),
             shippingMethod      = this.$el.querySelector('input[name="shipping"]:checked');
 
+      this.$store.state.loader = true;
       this.settingData(shippingAddressForm, response.shipping_address);
 
-      if (shippingMethod.value.length > 0) {
+      if (shippingMethod) {
         response.shipping_carrier_code = shippingMethod.value;
         response.shipping_method_code = shippingMethod.dataset.methodCode;
       } else {
@@ -247,7 +248,6 @@ export default {
         } else if (id === 'country_id' && value.length > 0) {
           object[id] = value;
         } else {
-          this.returnError();
           return false;
         }
       });
@@ -266,6 +266,8 @@ export default {
             eventSelectId = event.srcElement.id,
             inputRegion   = getForm.querySelector('#region'),
             regionId      = getForm.querySelector('#region_id');
+
+      this.$store.state.loader = true;
 
       if (countryId == getForm.querySelector('#' + eventSelectId)) {
         const eventOptionValue = event.srcElement.selectedOptions[0].value,
@@ -327,6 +329,7 @@ export default {
       return newRegionList;
     },
     returnError(element, cssClass, text) {
+      this.$store.state.loader = false;
       // Initial validation in future
     }
   }

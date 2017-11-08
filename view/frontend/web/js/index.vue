@@ -9,6 +9,8 @@
     <BaseSuccessStep/>
 
     <BaseItems/>
+
+    <BaseLoader/>
   </div>
 </template>
 
@@ -18,6 +20,7 @@ import BasePaymentStep from './components/steps/BasePaymentStep.vue'
 import BaseSummaryStep from './components/steps/BaseSummaryStep.vue'
 import BaseSuccessStep from './components/steps/BaseSuccessStep.vue'
 import BaseItems from './components/BaseItems.vue'
+import BaseLoader from './components/BaseLoader.vue'
 
 export default {
   components: {
@@ -25,7 +28,8 @@ export default {
     BasePaymentStep,
     BaseSummaryStep,
     BaseSuccessStep,
-    BaseItems
+    BaseItems,
+    BaseLoader
   },
   data() {
     return {
@@ -40,6 +44,9 @@ export default {
   },
   beforeMount() {
     this.$store.commit('setCartId', this.config.quoteData.entity_id);
+  },
+  mounted() {
+    this.$store.state.loader = false;
   }
 }
 </script>

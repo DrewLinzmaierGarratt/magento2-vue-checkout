@@ -409,6 +409,9 @@ export default {
       this.isBillingAddressHidden = true;
       billingCheckbox.checked = true;
     }
+  },
+  updated() {
+    this.$store.state.loader = false;
   }
 };
 </script>

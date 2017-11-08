@@ -67,6 +67,9 @@ export default {
     currency(value) {
       return parseFloat(value).toFixed(2);
     }
+  },
+  updated() {
+    this.$store.state.loader = false;
   }
 }
 </script>
