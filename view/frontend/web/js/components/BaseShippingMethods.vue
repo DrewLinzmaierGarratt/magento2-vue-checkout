@@ -63,11 +63,6 @@ export default {
       type: String
     }
   },
-  filters: {
-    currency(value) {
-      return parseFloat(value).toFixed(2);
-    }
-  },
   updated() {
     this.$store.state.loader = false;
   }
